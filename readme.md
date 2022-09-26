@@ -1,28 +1,20 @@
-# Stori-Standalone
+# Stori-docker
 This repository contains all the files to run the Stori-Test app using the Flask-CLI
 ## Requirements
 
- - Python 3.9
- - MySQL client for Python 
+ - Docker Compose
 
 ## Installation 
 
  1. Clone repository 
 
-    git clone https://github.com/lucf25/stori-test-standalone.git
+    git clone https://github.com/lucf25/stori-docker.git
  
- 2. Create a VENV inside the app's directory
+ 2. Run docker-compose build in project's root foolder 
 
-    python3 -m venv stori-standalone
+    docker-compose build 
 
- 3. Activate VENV
+ 3. Run Docker-compose up
 
-    source stori-standalone/bin/activate
+    docker-compose up
 
- 4. Install requirements 
-
-    pip install -r requirements.txt
-
- 5. Run Flask App 
-
-    flask run 
