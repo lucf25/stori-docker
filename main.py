@@ -18,7 +18,7 @@ def main():
 @app.route("/fireEmail", methods=["POST"])
 def generatemail():
     req = request.get_json()
-    df = pd.read_csv('data/' + req['filename'])
+    df = pd.read_csv('/app/app/app/data/' + req['filename'])
     df[['Month','Day']] = df["Date"].str.split("/", 1, expand=True);
     df = df.astype({'Month':'int'})
 
@@ -41,7 +41,7 @@ def generateRandomData():
     engine = create_engine("mysql+mysqldb://admin:"+'cehxuk-paxqec-sowHo3'+"@database-1.ctwyx4gwfp3n.us-east-1.rds.amazonaws.com/stori")
     ls = pd.DataFrame(random_list, columns=["Id", "Date", "Transaction"])
     filename = get_random_string(30)+".csv"
-    file = open("data/"+filename, "w")
+    file = open("/app/app/app/data/"+filename, "w")
     file.write(ls.to_csv(index=False))
     file.close()
     csv_id = 0
@@ -57,7 +57,7 @@ def generateRandomData():
 
 @app.route("/getCSVList")
 def getCSVList():
-    csvs = os.listdir("data")
+    csvs = os.listdir("/app/app/app/data")
     return json.dumps(csvs)
 
 def get_random_string(length):
@@ -84,7 +84,7 @@ def sendEmail(html, email):
 
 @app.route("/downloadCSV/<path:filename>")
 def downloadCSV(filename): 
-   return send_file("data/"+filename, mimetype="text/csv", as_attachment=True)
+   return send_file("/app/app/app/data/"+filename, mimetype="text/csv", as_attachment=True)
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True, port=80)
